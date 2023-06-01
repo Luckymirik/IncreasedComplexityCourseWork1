@@ -29,7 +29,7 @@ public class Main {
 //        fullName(employee);
 //        minSalary(employee);
 //        maxSalary(employee);
-        indexedSalary(employee);
+   //     indexedSalary(employee,33);
         System.out.println();
         minSalaryDepartment(employee,3);
         System.out.println();
@@ -39,7 +39,7 @@ public class Main {
         System.out.println();
         averageSalaryDepartment(employee, 4);
         System.out.println();
-        departmentIndexSalary(employee, 5);
+        departmentIndexSalary(employee, 5,33);
         System.out.println();
         departmentToStringForAll(employee, 1);
         System.out.println();
@@ -72,39 +72,39 @@ public class Main {
     }
 
     public static int minSalary(Employee[] c) {
-        int a = 0;
+
         Employee min = c[0];
         for (Employee employee : c) {
             if (employee != null) {
                 if (min.getSalary() > employee.getSalary()) {
                     min = employee;
-                    a++;
+
 
 
                 }
             }
         }
         System.out.println("Сотрудник с минимальной зарплатой "+ min.getSalary()+" " +min.getName() + " " + min.getSurname());
-        return a;
+        return min.getSalary();
     }
 
     public static int maxSalary(Employee[] d) {
 
 
         Employee max = d[0];
-        int a =0;
+
 
         for (Employee employee : d) {
-            if (employee != null) {
+
                 if (max.getSalary() < employee.getSalary()) {
                     max = employee;
-                    a++;
+
 
                 }
             }
-        }
+
         System.out.println("Сотрудник с максимальной зарплатой "+ max.getSalary()+" "+max.getName() + " " + max.getSurname());
-        return a;
+        return max.getSalary();
     }
 
     public static int averageSalary(Employee[] e) {
@@ -126,21 +126,22 @@ public class Main {
 
     }
 
-    public static int indexedSalary(Employee[] g) {
-        System.out.println("Проиндексированные зарплаты сотрудников по порядку:");
-        int percent = 33;
-        int a = 0;
-        for (Employee employee : g) {
-            if ((employee != null)) {
-                a = employee.getSalary() + employee.getSalary() / 100 * percent;
-                System.out.println(a);
-            }
 
 
-        }
-        return a;
+     public static double indexedSalary(Employee[] d,double g){
+         System.out.println("Проиндексированные зарплаты сотрудников по порядку:");
+         double ind = g/100+1;
+         double a =0;
+         for (Employee employee: d) {
+       a = employee.getSalary()*ind;
+             System.out.println(a);
 
-    }
+         }
+         return a;
+     }
+
+
+
 
 
     public static Employee[] department(Employee[] e, int d) {
@@ -179,14 +180,12 @@ public class Main {
         System.out.println("Средняя зарплата по "+d+"-му отделу "+averageSalary(department(e, d)));
     }
 
-    public static void departmentIndexSalary(Employee[] e, int d) {
-//        Employee[]n=department(e,d);
-//        for (int i = 0; i < n.length; i++) {
-//            System.out.println(indexedSalary(new Employee[]{n[i]}));
-        System.out.println(d+"ый отдел");
-        indexedSalary(department(e, d));
+    public static void departmentIndexSalary(Employee[] e, int d,double g) {
 
-    }
+        System.out.println(d+"ый отдел");
+            indexedSalary(department(e,d),g);
+        }
+
 
 
     public static void departmentToStringForAll(Employee[] e, int d) {
